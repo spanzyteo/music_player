@@ -12,6 +12,7 @@ const SongCard = ({ song, isPlaying, activeSong, i, data }) => {
   }
 
   const handlePlayClick = () => {
+    console.log(song.hub.actions)
     dispatch(setActiveSong({ song, data, i }))
     dispatch(playPause(true))
   }
@@ -37,7 +38,7 @@ const SongCard = ({ song, isPlaying, activeSong, i, data }) => {
       </div>
       <div className="mt-4 flex flex-col">
         <p className="font-semibold text-lg text-white truncate">
-          <Link to={`/songs/${song?.key}`}>{song.title}</Link>
+          <Link to={`/songs/${song?.hub?.actions['0'].id}`}>{song.title}</Link>
         </p>
         <p className="text-sm truncate text-gray-300 mt-1">
           <Link

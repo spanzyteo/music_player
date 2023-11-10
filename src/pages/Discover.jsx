@@ -15,7 +15,7 @@ const Discover = () => {
 
   if (error) return <Error />
 
-  console.log(data)
+  console.log(data.tracks)
 
   return (
     <div className="flex flex-col">
@@ -37,16 +37,20 @@ const Discover = () => {
       </div>
 
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {data?.tracks.map((song, i) => (
-          <SongCard
-            key={song.key}
-            song={song}
-            isPlaying={isPlaying}
-            activeSong={activeSong}
-            data={data}
-            i={i}
-          />
-        ))}
+        {data?.tracks
+          .filter((song) => {
+            return Object.hasOwn(song.hub, 'actions')
+          })
+          .map((song, i) => (
+            <SongCard
+              key={song.key}
+              song={song}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              data={data}
+              i={i}
+            />
+          ))}
       </div>
     </div>
   )
