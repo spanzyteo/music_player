@@ -19,8 +19,12 @@ const SongDetails = () => {
 
       <div className="mb-10">
         <h2 className="text-white text-3xl font-bold">Lyrics:</h2>
-        {songData?.sections[1].type === 'LYRICS' ? (
-          songData?.sections[1]?.text?.map((line, i) => (
+        {songData?.status === '404' ? (
+          <p className="text-gray-400 text-base my-1">
+            Sorry, the requested song was not found
+          </p>
+        ) : songData?.sections?.type === 'LYRICS' ? (
+          songData?.sections?.text?.map((line, i) => (
             <p className="text-gray-400 text-base my-1">{line}</p>
           ))
         ) : (

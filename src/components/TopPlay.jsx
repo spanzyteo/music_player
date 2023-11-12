@@ -59,6 +59,8 @@ const TopPlay = () => {
 
   const topPlays = data?.tracks.slice(0, 5)
 
+  console.log(`Top plays: ${topPlays}`)
+
   const handlePauseClick = () => {
     dispatch(playPause(false))
   }
